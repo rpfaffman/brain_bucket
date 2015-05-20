@@ -5,6 +5,7 @@ Sequel.migration do
       DateTime :created_at
       text :identifier
       integer :current_neuron_id
+      float :sms_number
     end
 
     create_table :neurons do

@@ -9,4 +9,8 @@ class Neuron < Sequel::Model
     self.created_at ||= Time.now
     super
   end
+
+  def title
+    "#{content[0,10]} (#{id})"
+  end
 end

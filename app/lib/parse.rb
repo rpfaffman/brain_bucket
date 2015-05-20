@@ -5,8 +5,12 @@ class Parse
     @params = params
   end
 
-  def sender
-    @sender ||= params[:sender].split("\"")[1]
+  def identifier
+    @sender ||= params[:subject].split(' ')[2..3].join(' ')
+  end
+
+  def sms_number
+    @sms_number ||= params[:subject].split(' ')[4..5].join.gsub(/\[|\]|\(|\)|-/,'')
   end
 
   def content
