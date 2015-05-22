@@ -5,6 +5,7 @@ gem 'sinatra'
 gem 'rake'
 gem 'haml'
 gem 'dotenv'
+gem 'tux'
 
 # clients
 gem 'googlevoiceapi'
@@ -18,5 +19,4 @@ gem 'pg'
 gem 'byebug'
 group :development do
   gem 'shotgun'
-  gem 'tux'
 end

@@ -11,3 +11,5 @@ Dir['./app/models/**/*.rb'].each { |file| require file }
 
 # load lib
 Dir['./app/lib/**/*.rb'].each { |file| require file }
+
+require './app'

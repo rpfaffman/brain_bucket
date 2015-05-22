@@ -1,4 +1,4 @@
-require './app'
+require './init'
 
 namespace :db do
   require 'sequel'

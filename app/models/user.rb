@@ -1,16 +1,16 @@
 class User < Sequel::Model
-  one_to_many :neurons
-  many_to_one :current_neuron, class: Neuron
+  one_to_many :thoughts
+  many_to_one :current_thought, class: :Thought
 
   def before_create
     self.created_at ||= Time.now
     super
   end
 
-  def create_neuron(content)
-    neuron = Neuron.create(content: content)
-    add_neuron(neuron)
-    # associate neuron to current or make it current
-    current_neuron ? current_neuron.add_neuron(neuron) : update(current_neuron: neuron)
+  def think(content)
+    thought = Thought.create(content: content)
+    add_thought(thought)
+    # associate thought to current or make it current
+    current_thought ? current_thought.add_child(thought) : update(current_thought: thought)
   end
 end

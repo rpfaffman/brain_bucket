@@ -13,7 +13,11 @@ class Parse
     @sms_number ||= params[:subject].split(' ')[4..5].join.gsub(/\[|\]|\(|\)|-/,'')
   end
 
+  def command
+    @command ||= content.split('/')[1].strip
+  end
+
   def content
-    @body ||= params[:body].gsub("\r\n", " ")
+    @body ||= params[:body].gsub("\r\n", " ").strip
   end
 end

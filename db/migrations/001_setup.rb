@@ -4,22 +4,16 @@ Sequel.migration do
       primary_key :id
       DateTime :created_at
       text :identifier
-      integer :current_neuron_id
+      integer :current_thought_id
       float :sms_number
     end
 
-    create_table :neurons do
+    create_table :thoughts do
       primary_key :id
       integer :user_id
+      integer :parent_id
       DateTime :created_at
       text :content
-    end
-
-    create_table :axons do
-      primary_key :id
-      DateTime :created_at
-      integer :from_id
-      integer :to_id
     end
   end
 end

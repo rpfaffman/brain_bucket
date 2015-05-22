@@ -4,8 +4,8 @@ class App < Sinatra::Base
   end
 
   post '/' do
-    current_user.create_neuron(parsed.content)
-    respond_with_sms "Associated with #{current_user.current_neuron.title}"
+    current_user.think parsed.content
+    respond_with_sms "Associated with #{current_user.current_thought.title}"
     status 200
   end
 
@@ -15,7 +15,7 @@ class App < Sinatra::Base
 
   private
 
-  # messages
+  # operations
   def respond_with_sms(msg)
     sms_client.send(
       to: parsed.sms_number,
@@ -34,9 +34,6 @@ class App < Sinatra::Base
     )
   end
 
-  def sms_client
-    @@sms_client ||= Client::GoogleVoice.new
-  end
-
   def parsed; @parse ||= Parse.new(params) end
+  def sms_client; @@sms_client ||= Client::GoogleVoice.new end
 end
