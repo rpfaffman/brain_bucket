@@ -15,7 +15,7 @@ Sequel.migration do
       integer :parent_id
       timestamp :created_at
       text :content
-      index [:user_id, :content], unique: true
+      index [:user_id, :parent_id, :content], unique: true
     end
   end
 end

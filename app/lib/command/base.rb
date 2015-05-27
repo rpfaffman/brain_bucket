@@ -5,9 +5,13 @@ class Command
     def initialize(user, args)
       @user = user
       @args = args
+      parse_args
+    end
 
-      # set the args as instance variables
-      args.each { |k,v| instance_variable_set("@#{k.to_s}", v) }
+    protected
+
+    def parse_args
+      # implement me in a subclass
     end
   end
 end

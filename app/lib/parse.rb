@@ -13,11 +13,20 @@ class Parse
     @sms_number ||= params[:subject].split(' ')[4..5].join.gsub(/\[|\]|\(|\)|-/,'')
   end
 
-  def command
-    @command ||= content.split('/')[1].strip
-  end
-
   def content
     @body ||= params[:body].gsub("\r\n", " ").strip
+  end
+
+  def command
+    @command ||= (
+      str = content.split('/')[1]
+      if str
+        str = str.strip.split(' ')
+        OpenStruct.new(
+          prefix: str[0],
+          args:   str[1..-1]
+        )
+      end
+    )
   end
 end
