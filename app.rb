@@ -16,6 +16,7 @@ class App < Sinatra::Base
   private
 
   # operations
+
   def respond_with_sms(msg)
     sms_client.send(
       to: parsed.sms_number,
@@ -24,11 +25,12 @@ class App < Sinatra::Base
   end
 
   # objects
+
   def current_user
     @current_user ||= (
       attrs = {
         identifier: parsed.identifier,
-        sms_number: parsed.sms_number.to_i
+        sms_number: parsed.sms_number.to_s
       }
       User.where(attrs).first || User.create(attrs)
     )
