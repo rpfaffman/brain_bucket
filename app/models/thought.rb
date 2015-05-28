@@ -15,8 +15,4 @@ class Thought < Sequel::Model
   def title
     "(#{id}) #{content[0,50]}"
   end
-
-  def siblings
-    parent.children - [self]
-  end
 end
