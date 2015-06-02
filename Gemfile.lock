@@ -8,6 +8,7 @@ GEM
       slop (~> 3.6)
     columnize (0.9.0)
     debugger-linecache (1.2.0)
+    diff-lcs (1.2.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.0.1)
@@ -50,6 +51,19 @@ GEM
       rack (>= 1.0)
       rack-test (~> 0.6.2)
       ripl (>= 0.7.0)
+    rspec (3.2.0)
+      rspec-core (~> 3.2.0)
+      rspec-expectations (~> 3.2.0)
+      rspec-mocks (~> 3.2.0)
+    rspec-core (3.2.3)
+      rspec-support (~> 3.2.0)
+    rspec-expectations (3.2.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.2.0)
+    rspec-mocks (3.2.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.2.0)
+    rspec-support (3.2.2)
     sequel (4.22.0)
     shotgun (0.9.1)
       rack (>= 1.0)
@@ -81,7 +95,9 @@ DEPENDENCIES
   googlevoiceapi
   haml
   pg
+  rack-test
   rake
+  rspec
   sequel
   shotgun
   sinatra

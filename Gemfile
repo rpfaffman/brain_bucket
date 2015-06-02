@@ -6,6 +6,7 @@ gem 'rake'
 gem 'haml'
 gem 'dotenv'
 gem 'tux'
+gem 'byebug'
 
 # clients
 gem 'googlevoiceapi'
@@ -16,7 +17,11 @@ gem 'sinatra-sequel'
 gem 'pg'
 
 # development
-gem 'byebug'
 group :development do
   gem 'shotgun'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'rack-test'
 end
