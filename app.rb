@@ -14,7 +14,7 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    haml :index
+    haml :index, locals: { thoughts: Thought.all }
   end
 
   private
@@ -49,7 +49,7 @@ class App < Sinatra::Base
         identifier: parsed.identifier,
         sms_number: parsed.sms_number.to_s
       }
-      User.where(attrs).first || User.create(attrs)
+      User.find_or_create(attrs)
     )
   end
 

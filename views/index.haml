@@ -4,5 +4,5 @@
     %meta{:charset => "UTF-8"}
     %title A title
   %body
-    %p This is a placeholder. Index page.
-
+    - thoughts.each do |thought|
+      %p= "#{thought.user.identifier} - #{thought.content}"
