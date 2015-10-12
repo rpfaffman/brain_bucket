@@ -8,7 +8,7 @@ Bundler.require(:test)
 # configure rspec
 RSpec.configure do |config|
   config.include Rack::Test::Methods
-  # config.before(:each) { $db = [] }
+  config.before(:each) { `rake db:reset` }
   config.order = :random
   Kernel.srand config.seed
 end

@@ -1,6 +1,6 @@
 module Client
   class GoogleVoice
-    def send(opts)
+    def send_text(opts)
       api.sms(opts[:to], opts[:content])
     end
 

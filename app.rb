@@ -35,7 +35,7 @@ class App < Sinatra::Base
   end
 
   def respond_with_sms(msg)
-    sms_client.send(
+    sms_client.send_ext(
       to: parsed.sms_number,
       content: msg
     )

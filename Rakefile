@@ -5,6 +5,12 @@ namespace :db do
   Sequel.extension :migration
   database = App.database
 
+  desc 'Reset DB'
+  task :reset => :app do
+    database.tables.each{|x| database.drop_table(x)}
+    Sequel::Migrator.apply(database, 'db/migrations')
+  end
+
   desc 'Run DB migrations'
   task :migrate => :app do
     Sequel::Migrator.apply(database, 'db/migrations')
