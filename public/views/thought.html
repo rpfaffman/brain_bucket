@@ -1,0 +1,8 @@
+<div class="thought">
+  {{ ngModel.id }} - {{ ngModel.content }}
+  <ul>
+    <li ng-repeat="thought in ngModel.children">
+      <thought ng-model="thought"></thought>
+    </li>
+  </ul>
+</div>

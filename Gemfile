@@ -3,10 +3,10 @@ source 'http://rubygems.org'
 # essential
 gem 'sinatra'
 gem 'rake'
-gem 'haml'
 gem 'dotenv'
 gem 'tux'
 gem 'byebug'
+gem 'json'
 
 # clients
 gem 'googlevoiceapi'

@@ -1,3 +1,5 @@
+require 'json'
+
 class App < Sinatra::Base
   configure do
     set :database, DB 
@@ -16,7 +18,14 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    haml :index, locals: { thoughts: Thought.all }
+    @thoughts = Thought.all
+    erb :index, locals: { thoughts: Thought.all }
+  end
+
+  get '/thoughts' do
+    content_type :json
+    status 200
+    Thought.where(parent_id: nil).to_json(include: :children)
   end
 
   private
