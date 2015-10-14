@@ -25,7 +25,7 @@ class App < Sinatra::Base
   get '/thoughts' do
     content_type :json
     status 200
-    Thought.where(parent_id: nil).to_json(include: :children)
+    Thought.where(parent_id: nil).map(&:serialize).to_json
   end
 
   private

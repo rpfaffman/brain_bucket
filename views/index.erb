@@ -8,10 +8,6 @@
   </head>
   <body ng-controller="ThoughtsController">
     {{ test }}
-    <ul>
-      <li ng-repeat="thought in thoughts">
-        <thought ng-model="thought"></span>
-      </li>
-    </ul>
+    <collection collection="thoughts"></collection>
   </body>
 </html>

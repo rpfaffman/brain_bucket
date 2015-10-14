@@ -17,4 +17,8 @@ class Thought < Sequel::Model
   def title
     "(#{id}) #{content[0,50]}"
   end
+
+  def serialize
+    values.merge({ children: children.map(&:serialize) })
+  end
 end
