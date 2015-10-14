@@ -4,13 +4,15 @@ class App < Sinatra::Base
   end
 
   post '/' do
-    response = (
-      process_command ||
-      process_content
-    )
-
-    respond_with_sms response || "Error: Invalid input."
-    status 200
+    begin
+      Log.create(event: "POST /", dump: params)
+      response = (process_command || process_content)
+      respond_with_sms response || "Error: Invalid input."
+      status 200
+    rescue Exception => e
+      respond_with_sms "ERROR: #{e.message}"
+      raise e
+    end
   end
 
   get '/' do
@@ -35,7 +37,7 @@ class App < Sinatra::Base
   end
 
   def respond_with_sms(msg)
-    sms_client.send_ext(
+    sms_client.send_text(
       to: parsed.sms_number,
       content: msg
     )
