@@ -1,6 +1,8 @@
 class Parse
   attr_reader :params
 
+  COMMAND_PREFIX = '!'
+
   def initialize(params)
     @params = params
   end
@@ -19,7 +21,7 @@ class Parse
 
   def command
     @command ||= (
-      str = content.split('/')[1]
+      str = content.split(COMMAND_PREFIX)[1]
       if str
         str = str.strip.split(' ')
         OpenStruct.new(
